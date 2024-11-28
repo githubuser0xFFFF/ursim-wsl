@@ -1,0 +1,37 @@
+
+# This Docker Compose file sets up a network and a service for simulating an 
+# UR5e robot using the Universal Robots URSim simulator.
+# 
+# Networks:
+#   - ursim_net: A custom network for the URSim simulator.
+#
+# Services:
+#   - ur5e_simulator: 
+#       - Uses the universalrobots/ursim_e-series image to simulate the UR5e robot.
+#       - The container is named ur5e_container.
+#       - The container is connected to the ursim_net network.
+#       - Environment variable ROBOT_MODEL is set to UR5e.
+#       - Ports are mapped to allow access to various services:
+#           - 29999: Dashboard server.
+#           - 30001-30004: Primary, Secondary, Real-time, and RTDE ports.
+#           - 5900: VNC server for connection with VNC viewer.
+#           - 6080: NoVNC server for connection with a web browser.
+networks:
+  ursim_net:
+
+services:
+  ur5e_simulator:
+    image: universalrobots/ursim_e-series # Use the universalrobots/ursim_e-series image
+    restart: no  # Do not restart the container automatically
+    container_name: ur5e_container # Name the container ur5e_container
+    networks: # Connect the container to the ursim_net network
+      - ursim_net
+    environment: # Set environment variables
+      - ROBOT_MODEL=UR5e
+    ports: # Map ports between the host and the container
+      - "29999:29999" # Dashboard server
+      - "30001-30004:30001-30004" # Primary, Secondary, Real-time and RTDE ports
+      - "5900:5900" # VNC server - for connection with VNC viewer
+      - "6080:6080" # NoVNC server - for connection with web browser
+    stdin_open: true
+    tty: true

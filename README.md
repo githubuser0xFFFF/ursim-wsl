@@ -21,7 +21,8 @@ Open your WSL2 terminal and clone this repository via `git clone` into
 
 ```bash
 docker compose up -d
-`
+````
+
 This should start and run the docker container `ur5e_container`. You can check
 in the docker desktop UI if the container is running.
 
@@ -41,9 +42,9 @@ You have now two options to connect to ursim:
    wsl --install
    ```
 
-   - This will install the default Linux distribution and set WSL2 as the default version.
+   This will install the default Linux distribution and set WSL2 as the default version.
 
-2. Set WSL2 as Standard-Version
+1. Set WSL2 as Standard-Version
 
    Run the following command
 

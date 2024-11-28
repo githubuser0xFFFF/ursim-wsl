@@ -21,9 +21,9 @@ Open your WSL2 terminal and clone this repository via `git clone` into
 
 ```bash
 docker compose up -d
-```
-
-This should start and run the docker container. You can check this with
+`
+This should start and run the docker container `ur5e_container`. You can check
+in the docker desktop UI if the container is running.
 
 ## Connect to VNC server
 
